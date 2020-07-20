@@ -14,8 +14,6 @@ public class Employee {
 	private long id;
 	private String name;
 	private double salary;
-	private List messages;
-	
 	
 	public long getId() {
 		return id;
@@ -31,12 +29,6 @@ public class Employee {
 	}
 	public void setSalary(double salary) {
 		this.salary = salary;
-	}
-	public List getMessages() {
-		return messages;
-	}
-	public void setMessages(List messages) {
-		this.messages = messages;
 	}
 
 }
