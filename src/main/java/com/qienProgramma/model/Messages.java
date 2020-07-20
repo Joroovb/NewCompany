@@ -10,7 +10,20 @@ public class Messages {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	long id;
-	String message;
+	private long id;
+	private String message;
+	
+	
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public long getId() {
+		return id;
+	}
+	
+	
 		
 }
