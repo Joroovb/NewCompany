@@ -1,4 +1,4 @@
-package com.qien.company;
+package com.qienProgramma.company;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
