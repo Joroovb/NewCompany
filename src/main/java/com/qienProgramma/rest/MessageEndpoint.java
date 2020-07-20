@@ -51,17 +51,6 @@ public class MessageEndpoint {
         return "Post is gelukt";
     }
 
-    @GetMapping("/checkdeservice")
-    public String checkDeService() {
-        System.out.println("Het werkt");
-        msg.inDeService();
-        return "Reply: Check de Service";
-    }
-
-    @GetMapping("/abc")
-    public Messages jojojo(){
-        return new Messages();
-    }
 }
 
 
