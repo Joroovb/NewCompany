@@ -1,6 +1,5 @@
 package com.qienProgramma.rest;
 
-
 import com.qienProgramma.controller.DepartmentService;
 import com.qienProgramma.model.Department;
 import org.springframework.beans.factory.annotation.Autowired;
