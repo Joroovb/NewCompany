@@ -12,7 +12,7 @@ import com.qienProgramma.controller.EmployeeService;
 import com.qienProgramma.model.Employee;
 
 @RestController
-@RequestMapping("/api/Employee")
+@RequestMapping("/api/employee")
 public class EmployeeEndpoint {
 	 @Autowired
 	    EmployeeService es;
