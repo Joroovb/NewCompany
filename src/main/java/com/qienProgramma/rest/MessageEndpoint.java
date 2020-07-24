@@ -3,6 +3,7 @@ package com.qienProgramma.rest;
 import com.qienProgramma.controller.DepartmentRepository;
 import com.qienProgramma.controller.EmployeeRepository;
 import com.qienProgramma.controller.EmployeeService;
+import com.qienProgramma.model.Department;
 import com.qienProgramma.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -71,8 +72,10 @@ public class MessageEndpoint {
     }
 
     @PostMapping("new/department/{id}")
-    public void addMessageToAllDepartment(@PathVariable(value = "id") long id, @RequestBody Messages message) {
-
+    public void addMessageToAllEmployeesByDepartment(@PathVariable(value = "id") long id, @RequestBody Messages message) {
+       for (Employee em : dr.findById(id).get().getEmployees()) {
+           es.addMessageToEmployee(em, msg.addMessages(message));
+       }
     }
 }
 

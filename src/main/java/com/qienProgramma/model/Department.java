@@ -15,7 +15,7 @@ public class Department {
     private int aantalMedewerkers;
 
     @OneToMany
-    @JoinColumn(name="employee_id")
+    @JoinColumn(name="department_id")
     private List<Employee> employees = new ArrayList<>();
 
     public long getId() {
