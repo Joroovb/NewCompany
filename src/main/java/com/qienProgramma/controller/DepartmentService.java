@@ -20,6 +20,7 @@ public class DepartmentService {
     public Department getById(long id) {
         return dr.findById(id).get();
     }
+
     public void inDeService() {
         dr.save(new Department());
         System.out.println("We zijn in de service ");
