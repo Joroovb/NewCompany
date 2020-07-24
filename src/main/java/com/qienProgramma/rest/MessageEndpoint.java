@@ -1,5 +1,9 @@
 package com.qienProgramma.rest;
 
+import com.qienProgramma.controller.DepartmentRepository;
+import com.qienProgramma.controller.EmployeeRepository;
+import com.qienProgramma.controller.EmployeeService;
+import com.qienProgramma.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qienProgramma.controller.MessageService;
 import com.qienProgramma.model.Messages;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/messages")
 public class MessageEndpoint {
 
 	@Autowired
     MessageService msg;
+	@Autowired
+    EmployeeRepository er;
+	@Autowired
+    EmployeeService es;
+	@Autowired
+    DepartmentRepository dr;
 
     @PostMapping("/new")
     public Messages addMessage(@RequestBody Messages messages) {
@@ -51,6 +63,17 @@ public class MessageEndpoint {
         return "Post is gelukt";
     }
 
+    @PostMapping("/new/all")
+    public void addMessageToAll(@RequestBody Messages message) {
+        for (Employee em : er.findAll()) {
+            es.addMessageToEmployee(em, msg.addMessages(message));
+        }
+    }
+
+    @PostMapping("new/department/{id}")
+    public void addMessageToAllDepartment(@PathVariable(value = "id") long id, @RequestBody Messages message) {
+
+    }
 }
 
 

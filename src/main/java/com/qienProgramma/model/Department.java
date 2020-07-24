@@ -49,5 +49,4 @@ public class Department {
     public void addEmployeeToArray(Employee emp){
         employees.add(emp);
     }
-
 }

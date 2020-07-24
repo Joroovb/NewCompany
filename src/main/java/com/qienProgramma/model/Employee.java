@@ -1,10 +1,8 @@
 package com.qienProgramma.model;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -14,6 +12,14 @@ public class Employee {
 	private long id;
 	private String name;
 	private double salary;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+			name="the_messages",
+			joinColumns = @JoinColumn(name = "id"),
+			inverseJoinColumns = @JoinColumn(name = "messages_id"))
+	private List<Messages> messages = new ArrayList<>();
+
 	
 	public long getId() {
 		return id;
@@ -31,4 +37,12 @@ public class Employee {
 		this.salary = salary;
 	}
 
+	public List<Messages> getMessages() {
+		return messages;
+	}
+
+	public void addMessage(Messages message) {
+		this.messages.add(message);
+		System.out.println("New Message");
+	}
 }
