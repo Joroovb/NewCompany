@@ -1,11 +1,11 @@
 package com.qienProgramma.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "department")
 public class Department {
 
     @Id
@@ -13,6 +13,10 @@ public class Department {
     private long id;
     private String naam;
     private int aantalMedewerkers;
+
+    @OneToMany
+    @JoinColumn(name="employee_id")
+    private List<Employee> employees = new ArrayList<>();
 
     public long getId() {
         return id;
@@ -37,4 +41,13 @@ public class Department {
     public void setAantalMedewerkers(int aantalMedewerkers) {
         this.aantalMedewerkers = aantalMedewerkers;
     }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void addEmployeeToArray(Employee emp){
+        employees.add(emp);
+    }
+
 }

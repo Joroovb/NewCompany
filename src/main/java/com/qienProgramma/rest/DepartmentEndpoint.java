@@ -54,4 +54,10 @@ public class DepartmentEndpoint {
     public Department jojojo(){
         return new Department();
     }
+
+    @PutMapping("/addemployee/{departmentid}/{employeeid}")
+    public Department addEmployeeToDepartment(@PathVariable(value = "departmentid") long departmentid, @PathVariable(value = "employeeid") long employeeid) {
+        return ds.addEmployee(departmentid, employeeid);
+    }
+
 }
