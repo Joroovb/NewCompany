@@ -1,8 +1,15 @@
 package com.qienProgramma.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import com.qienProgramma.model.Employee;
+import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.qienProgramma.model.Employee;
+import com.qienProgramma.model.Messages;
+
+@Service
+@Transactional
 public class EmployeeService {
 	
 	 @Autowired
@@ -31,5 +38,11 @@ public class EmployeeService {
 	        System.out.println("DELETE IN SERVICE");
 	        er.deleteById(id);
 	    }
+	    
+	    public Employee addMessageToEmployee(Employee employee, Messages message) {
+	    	employee.addMessage(message);
+	    	return er.save(employee);
+		}
+
 
 }

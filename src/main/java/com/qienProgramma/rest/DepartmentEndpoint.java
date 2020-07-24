@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/Department")
+@RequestMapping("/api/department")
 public class DepartmentEndpoint {
 
     @Autowired
@@ -14,6 +14,7 @@ public class DepartmentEndpoint {
 
     @PostMapping("/new")
     public Department addDepartment(@RequestBody Department department) {
+    	System.out.println("Department added");
         return ds.addDepartment(department);
     }
 

@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qienProgramma.controller.EmployeeRepository;
+import com.qienProgramma.controller.EmployeeService;
 import com.qienProgramma.controller.MessageService;
+import com.qienProgramma.model.Employee;
 import com.qienProgramma.model.Messages;
 
 @RestController
@@ -19,6 +22,12 @@ public class MessageEndpoint {
 
 	@Autowired
     MessageService msg;
+	
+	@Autowired
+	EmployeeRepository er;
+	
+	@Autowired
+	EmployeeService es;
 
     @PostMapping("/new")
     public Messages addMessage(@RequestBody Messages messages) {
@@ -50,6 +59,14 @@ public class MessageEndpoint {
         System.out.println(md.getMessage());
         return "Post is gelukt";
     }
+    
+    @PostMapping("/new/all")
+    public void addMessageToAll(@RequestBody Messages message) {
+        for (Employee em : er.findAll()) {
+            es.addMessageToEmployee(em, msg.addMessages(message));
+        }
+    }
+    
 
 }
 
