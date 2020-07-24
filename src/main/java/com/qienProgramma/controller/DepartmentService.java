@@ -1,6 +1,8 @@
 package com.qienProgramma.controller;
 
+import com.qienProgramma.model.DepManager;
 import com.qienProgramma.model.Department;
+import com.qienProgramma.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,9 @@ public class DepartmentService {
 
     @Autowired
     DepartmentRepository dr;
+    
+    @Autowired
+    EmployeeRepository er;
 
     public Department getById(long id) {
         return dr.findById(id).get();
@@ -42,6 +47,13 @@ public class DepartmentService {
             dp.setNaam(department.getNaam());
         }
         dp.setAantalMedewerkers((department.getAantalMedewerkers()));
+        return dr.save(dp);
+    }
+
+    public Department addEmployee(long departmentid, long employeeid) {
+        Department dp = dr.findById(departmentid).get();
+        Employee em = er.findById(employeeid).get();
+        dp.addEmployeeToArray(em);
         return dr.save(dp);
     }
 }
