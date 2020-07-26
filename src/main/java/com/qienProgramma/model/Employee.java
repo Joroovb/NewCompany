@@ -13,6 +13,10 @@ public class Employee {
 	private String name;
 	private double salary;
 
+	@OneToOne
+	@JoinColumn(name = "phone_id", referencedColumnName = "id")
+	private Phone phone;
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name="the_messages",
@@ -44,5 +48,13 @@ public class Employee {
 	public void addMessage(Messages message) {
 		this.messages.add(message);
 		System.out.println("New Message");
+	}
+
+	public void addPhone(Phone phone) {
+		this.phone = phone;
+	}
+
+	public Phone getPhone() {
+		return phone;
 	}
 }
