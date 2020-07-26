@@ -17,7 +17,7 @@ public class Messages {
 	@ManyToMany(mappedBy = "messages")
 	@JsonBackReference
 	private List<Employee> employees = new ArrayList<>();
-	
+
 	public String getMessage() {
 		return message;
 	}

@@ -1,6 +1,7 @@
 package com.qienProgramma.controller;
 
 import com.qienProgramma.model.Messages;
+import com.qienProgramma.model.Phone;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.qienProgramma.model.Employee;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class EmployeeService {
 	
 	 @Autowired
 	    EmployeeRepository er;
+
+	 @Autowired
+	 PhoneRepository pr;
 
 	    public Employee getById(long id) {
 	        return er.findById(id).get();
@@ -42,4 +46,15 @@ public class EmployeeService {
 	    	return er.save(employee);
 		}
 
+		public Employee changeSalary(Employee employee, Employee employeeUpdate) {
+	    	employee.setSalary(employeeUpdate.getSalary());
+	    	return er.save(employee);
+		}
+
+	public Employee addPhoneToEmployee(long empid, long phoneid) {
+	    	Employee emp = er.findById(empid).get();
+	    	Phone phone = pr.findById(phoneid).get();
+			emp.addPhone(phone);
+	    	return er.save(emp);
+	}
 }
