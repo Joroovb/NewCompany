@@ -13,7 +13,7 @@ public class Employee {
 	private String name;
 	private double salary;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "phone_id", referencedColumnName = "id")
 	private Phone phone;
 

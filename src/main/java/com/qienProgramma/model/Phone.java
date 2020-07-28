@@ -12,7 +12,7 @@ public class Phone {
     private long id;
     private long phoneNumber;
 
-    @OneToOne(mappedBy = "phone")
+    @OneToOne(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true)
     private Employee employee;
 
     public long getId() {

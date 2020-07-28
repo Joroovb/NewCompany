@@ -54,6 +54,14 @@ public class EmployeeService {
 	public Employee addPhoneToEmployee(long empid, long phoneid) {
 	    	Employee emp = er.findById(empid).get();
 	    	Phone phone = pr.findById(phoneid).get();
+	    	Iterable<Employee> empList = er.findAll();
+	    	for (Employee emps : empList) {
+	    		if (emps.getPhone() != null) {
+					if (emps.getPhone().getId() == phoneid) {
+						emps.addPhone(null);
+					}
+				}
+			}
 			emp.addPhone(phone);
 	    	return er.save(emp);
 	}
