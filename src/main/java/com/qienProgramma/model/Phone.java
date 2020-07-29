@@ -13,6 +13,7 @@ public class Phone {
     private long phoneNumber;
 
     @OneToOne(mappedBy = "phone", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private Employee employee;
 
     public long getId() {
@@ -25,5 +26,9 @@ public class Phone {
 
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Employee getEmployee() {
+        return employee;
     }
 }
